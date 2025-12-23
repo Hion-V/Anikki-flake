@@ -99,6 +99,9 @@
             # Copy the entire Flutter bundle
             cp -r build/linux/x64/release/bundle/* $out/share/anikki/
             
+            # Ensure the executable has executable permissions
+            chmod +x $out/share/anikki/anikki
+            
             # Create debug output directory (required by buildFlutterApplication)
             mkdir -p $debug
             
