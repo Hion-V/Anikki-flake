@@ -17,9 +17,9 @@
 
           src = pkgs.fetchFromGitHub {
             owner = "Kylart";
-            repo = "Anikki";
-            rev = "dev";  # or use a specific commit SHA
-            hash = "";  # will be filled after first build attempt
+            repo = "Anikki_";
+            rev = "dev";
+            hash = "";
           };
 
           # Read the pubspec.lock.json file for deterministic dependency resolution
