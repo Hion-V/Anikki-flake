@@ -96,8 +96,23 @@
             mkdir -p $out/bin
             mkdir -p $out/share/anikki
             
+            # Debug: List what's in the bundle
+            echo "Contents of bundle directory:"
+            ls -la build/linux/x64/release/bundle/
+            
             # Copy the entire Flutter bundle
             cp -r build/linux/x64/release/bundle/* $out/share/anikki/
+            
+            # Debug: Check if anikki exists and its type
+            if [ -f $out/share/anikki/anikki ]; then
+              echo "anikki executable found:"
+              ls -la $out/share/anikki/anikki
+              file $out/share/anikki/anikki
+            else
+              echo "ERROR: anikki executable not found!"
+              echo "Contents of $out/share/anikki:"
+              ls -la $out/share/anikki/
+            fi
             
             # Ensure the executable has executable permissions
             chmod +x $out/share/anikki/anikki
