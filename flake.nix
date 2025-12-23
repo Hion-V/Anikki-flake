@@ -19,7 +19,7 @@
             owner = "Kylart";
             repo = "Anikki_";
             rev = "dev";
-            hash = "";
+            hash = "sha256-n0IIn/99eKmzYXeGQgg2lKdu9j9QhrhNeopOCyGusEA=";
           };
 
           # Read the pubspec.lock.json file for deterministic dependency resolution
