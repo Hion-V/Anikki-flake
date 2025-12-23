@@ -96,23 +96,11 @@
             mkdir -p $out/bin
             mkdir -p $out/share/anikki
             
-            # Debug: List what's in the bundle
-            echo "Contents of bundle directory:"
-            ls -la build/linux/x64/release/bundle/
-            
             # Copy the entire Flutter bundle
             cp -r build/linux/x64/release/bundle/* $out/share/anikki/
             
-            # Debug: Check if anikki exists and its type
-            if [ -f $out/share/anikki/anikki ]; then
-              echo "anikki executable found:"
-              ls -la $out/share/anikki/anikki
-              file $out/share/anikki/anikki
-            else
-              echo "ERROR: anikki executable not found!"
-              echo "Contents of $out/share/anikki:"
-              ls -la $out/share/anikki/
-            fi
+            # The Flutter build creates "Anikki" (capital A), rename it to lowercase
+            mv $out/share/anikki/Anikki $out/share/anikki/anikki
             
             # Ensure the executable has executable permissions
             chmod +x $out/share/anikki/anikki
@@ -136,13 +124,25 @@
             mkdir -p $out/share/applications
             cat > $out/share/applications/anikki.desktop <<EOF
 [Desktop Entry]
+Version=1.0
+Type=Application
 Name=Anikki
-Comment=Anime streaming and tracking application
+GenericName=Anime Tracker
+Comment=Anime streaming and tracking application with AniList/MAL support
 Exec=$out/bin/anikki
 Terminal=false
-Type=Application
-Categories=AudioVideo;Video;Player;
+StartupNotify=true
+Categories=AudioVideo;Video;Player;Network;
+Keywords=anime;streaming;anilist;myanimelist;torrent;
 EOF
+            
+            # Install icon if available in the bundle
+            if [ -f $out/share/anikki/data/flutter_assets/assets/logo.png ]; then
+              mkdir -p $out/share/icons/hicolor/512x512/apps
+              cp $out/share/anikki/data/flutter_assets/assets/logo.png \
+                 $out/share/icons/hicolor/512x512/apps/anikki.png
+              echo "Icon=anikki" >> $out/share/applications/anikki.desktop
+            fi
           '';
 
           meta = with pkgs.lib; {
