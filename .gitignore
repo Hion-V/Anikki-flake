@@ -3,6 +3,9 @@
 !/flake.nix
 !/flake.lock
 !/.gitignore
+!/.gitmodules
 !/README.md
 !/pubspec.lock.json
 !/generate_pubspec_lock_json.py
+!/shell.nix
+!/anikki-src/
