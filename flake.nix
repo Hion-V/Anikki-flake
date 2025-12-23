@@ -16,7 +16,7 @@
           version = "0.1.0";
 
           src = pkgs.fetchFromGitHub {
-            owner = "Kylart";
+            owner = "Hion-V";
             repo = "Anikki_";
             rev = "dev";
             hash = "sha256-n0IIn/99eKmzYXeGQgg2lKdu9j9QhrhNeopOCyGusEA=";

@@ -6,5 +6,5 @@
 	url = https://github.com/i96751414/torrest-cpp
 [submodule "anikki-src"]
 	path = anikki-src
-	url = https://github.com/Kylart/Anikki_.git
+	url = https://github.com/Hion-V/Anikki_.git
 	branch = dev
