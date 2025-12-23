@@ -56,6 +56,7 @@
             libsecret
             jsoncpp
             mpv
+            libass
           ];
 
           preConfigure = ''
