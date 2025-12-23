@@ -57,6 +57,7 @@
             jsoncpp
             mpv
             libass
+            fontconfig
           ];
 
           preConfigure = ''
@@ -112,10 +113,10 @@
           '';
 
           postInstall = ''
-            # Create wrapper with proper library paths including mpv
+            # Create wrapper with proper library paths including mpv and plugin libraries
             # Wrap the actual executable in the share directory
             wrapProgram $out/share/anikki/anikki \
-              --prefix LD_LIBRARY_PATH : "${pkgs.lib.makeLibraryPath buildInputs}"
+              --prefix LD_LIBRARY_PATH : "$out/share/anikki/lib:${pkgs.lib.makeLibraryPath buildInputs}"
             
             # Create a symlink in bin that points to the wrapped executable
             ln -s $out/share/anikki/anikki $out/bin/anikki
