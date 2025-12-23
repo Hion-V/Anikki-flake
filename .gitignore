@@ -3,6 +3,6 @@
 !/flake.nix
 !/flake.lock
 !/.gitignore
-!/FLAKE_README.md
+!/README.md
 !/pubspec.lock.json
 !/generate_pubspec_lock_json.py
