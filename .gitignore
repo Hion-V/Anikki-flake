@@ -5,3 +5,4 @@
 !/.gitignore
 !/FLAKE_README.md
 !/pubspec.lock.json
+!/generate_pubspec_lock_json.py
