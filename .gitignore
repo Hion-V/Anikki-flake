@@ -1,0 +1,6 @@
+# Keep only flake-related files
+/*
+!/flake.nix
+!/flake.lock
+!/.gitignore
+!/README.md
