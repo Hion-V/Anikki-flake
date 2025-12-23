@@ -4,3 +4,4 @@
 !/flake.lock
 !/.gitignore
 !/README.md
+!/pubspec.lock.json
