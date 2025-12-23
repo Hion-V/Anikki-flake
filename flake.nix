@@ -99,13 +99,6 @@
             # Copy the entire Flutter bundle
             cp -r build/linux/x64/release/bundle/* $out/share/anikki/
             
-            # Create a wrapper script in bin that runs the executable
-            cat > $out/bin/anikki <<EOF
-#!/bin/sh
-exec $out/share/anikki/anikki "\$@"
-EOF
-            chmod +x $out/bin/anikki
-            
             # Create debug output directory (required by buildFlutterApplication)
             mkdir -p $debug
             
@@ -114,8 +107,12 @@ EOF
 
           postInstall = ''
             # Create wrapper with proper library paths including mpv
-            wrapProgram $out/bin/anikki \
+            # Wrap the actual executable in the share directory
+            wrapProgram $out/share/anikki/anikki \
               --prefix LD_LIBRARY_PATH : "${pkgs.lib.makeLibraryPath buildInputs}"
+            
+            # Create a symlink in bin that points to the wrapped executable
+            ln -s $out/share/anikki/anikki $out/bin/anikki
             
             # Install desktop entry
             mkdir -p $out/share/applications
