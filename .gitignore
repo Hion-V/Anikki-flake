@@ -1,7 +1,24 @@
-# Keep only flake-related files
-/*
-!/flake.nix
-!/flake.lock
-!/.gitignore
-!/README.md
-!/pubspec.lock.json
+# Flake repository - tracking minimal required files
+result
+.direnv
+.dart_tool/
+build/
+
+# Keep these essential files
+!flake.nix
+!flake.lock
+!.gitignore
+!README.md
+!pubspec.lock.json
+!pubspec.yaml
+!pubspec.lock
+!lib/
+!assets/
+!linux/
+!android/
+!ios/
+!windows/
+!macos/
+!packages/
+!*.yaml
+!*.md
